@@ -66,8 +66,14 @@ def getGuessedWord(secretWord, lettersGuessed):
     returns: string, comprised of letters and underscores that represents
       what letters in secretWord have been guessed so far.
     '''
-    # FILL IN YOUR CODE HERE...
-
+    guessedWord = ""
+    for letter in secretWord:
+        if letter in lettersGuessed:
+            guessedWord += letter
+        else:
+            guessedWord += "_"
+        guessedWord += " "
+    return guessedWord.strip()
 
 
 def getAvailableLetters(lettersGuessed):
