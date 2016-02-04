@@ -21,14 +21,14 @@ def loadWords():
     Depending on the size of the word list, this function may
     take a while to finish.
     """
-    print "Loading word list from file..."
+    print("Loading word list from file...")
     # inFile: file
     inFile = open(WORDLIST_FILENAME, 'r', 0)
     # line: string
     line = inFile.readline()
     # wordlist: list of strings
     wordlist = string.split(line)
-    print "  ", len(wordlist), "words loaded."
+    print("  " + str(len(wordlist)) + " words loaded.")
     return wordlist
 
 def chooseWord(wordlist):
