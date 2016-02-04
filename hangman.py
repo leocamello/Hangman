@@ -74,7 +74,7 @@ def getGuessedWord(secretWord, lettersGuessed):
             guessedWord += "_"
         guessedWord += " "
     return guessedWord.strip()
-
+    
 
 def getAvailableLetters(lettersGuessed):
     '''
@@ -82,7 +82,11 @@ def getAvailableLetters(lettersGuessed):
     returns: string, comprised of letters that represents what letters have not
       yet been guessed.
     '''
-    # FILL IN YOUR CODE HERE...
+    availableLetters = ""
+    for letter in string.ascii_lowercase:
+        if letter not in lettersGuessed:
+            availableLetters += letter
+    return availableLetters 
     
 
 def hangman(secretWord):
