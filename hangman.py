@@ -87,7 +87,7 @@ def getAvailableLetters(lettersGuessed):
         if letter not in lettersGuessed:
             availableLetters += letter
     return availableLetters 
-    
+
 
 def hangman(secretWord):
     '''
@@ -109,7 +109,30 @@ def hangman(secretWord):
 
     Follows the other limitations detailed in the problem write-up.
     '''
-    # FILL IN YOUR CODE HERE...
+    mistakesMade = 0
+    allowedGuesses = 8
+    lettersGuessed = ""
+    print("Welcome to the game, Hangman!")
+    print(("I am thinking of a word that is {0} letters long.").format(len(secretWord)))
+    print("-------------")
+    while mistakesMade < allowedGuesses and not isWordGuessed(secretWord, lettersGuessed):
+        print(("You have {0} guesses left.").format(allowedGuesses - mistakesMade))
+        print(("Available letters: {0}").format(getAvailableLetters(lettersGuessed)))
+        guess = raw_input("Please guess a letter: ").lower()
+        if guess not in lettersGuessed:
+            lettersGuessed += guess
+            if guess in secretWord:
+                print(("Good guess: {0}").format(getGuessedWord(secretWord, lettersGuessed)))
+            else:
+                mistakesMade += 1
+                print(("Oops! That letter is not in my word: {0}").format(getGuessedWord(secretWord, lettersGuessed)))
+        else:
+            print(("Oops! You've already guessed that letter: {0}").format(getGuessedWord(secretWord, lettersGuessed)))
+        print("-------------")
+    if not isWordGuessed(secretWord, lettersGuessed):
+        print(("Sorry, you ran out of guesses. The word was {0}.").format(secretWord))
+    else:
+        print("Congratulations, you won!")
 
 
 
